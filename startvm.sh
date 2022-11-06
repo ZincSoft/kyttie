@@ -7,6 +7,7 @@ qemu-system-x86_64 \
     -display curses \
     -kernel ./linux_source_tree.ignore/arch/x86/boot/bzImage \
     -drive file=./linux_source_tree.ignore/qemu-image.img,format=raw,index=0,media=disk \
+    -virtfs local,path="$PWD",mount_tag=host0,security_model=passthrough,id=host0 \
     -append "root=/dev/sda loglevel=4 vga=6" \
     -vga std \
     --enable-kvm
