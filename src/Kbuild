@@ -1,3 +1,4 @@
-EXTRA_CFLAGS = -Wall -g
+EXTRA_CFLAGS = -Wall -Wno-error=unused-variable -g -DDEBUG
 
-obj-m        = kyttie.o
+obj-m += kyttie.o
+kyttie-y := ./af/cp.o ./af/proto.o ./af/sock.o
