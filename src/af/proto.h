@@ -7,6 +7,7 @@
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-variable"
+/** Protocol struct used for registration within the kernel. */
 static struct proto cp_proto = {
     .name       = "CP",
     .owner      = THIS_MODULE,
@@ -14,7 +15,10 @@ static struct proto cp_proto = {
 };
 #pragma GCC diagnostic pop
 
+/** Registers the CP protocol family with the kernel. */
 int register_cp_proto(void);
+
+/** Unregisters the CP protocol family with the kernel. */
 void unregister_cp_proto(void);
 
 #endif /* _CP_PROTO_H_ */
