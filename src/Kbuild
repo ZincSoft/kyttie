@@ -1,4 +1,4 @@
-EXTRA_CFLAGS = -Wall -Wno-error=unused-variable -g -DDEBUG
+EXTRA_CFLAGS = -Wall -Wno-error=unused-variable -Wno-error=unused-function -g -DDEBUG -I./linux_source_tree.ignore/include/
 
 obj-m += kyttie.o
 kyttie-y := ./af/cp.o ./af/proto.o ./af/sock.o

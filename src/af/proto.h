@@ -15,5 +15,6 @@ static struct proto cp_proto = {
 #pragma GCC diagnostic pop
 
 int register_cp_proto(void);
+void unregister_cp_proto(void);
 
 #endif /* _CP_PROTO_H_ */

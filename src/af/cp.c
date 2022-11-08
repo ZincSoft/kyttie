@@ -23,13 +23,27 @@ static int __init kyt_init(void)
     int rc = 0;
 
     rc = register_cp_proto();
-    if (rc != 0)
-        goto err;
-    rc = register_cp_sock();
-    if (rc != 0)
-        goto err;
+    if (rc != 0) {
+        pr_err("Failed to register Catnet protocol with kernel, err=%d. Bailing!", rc);
+        goto err_proto;
+    }
 
-err:
+    rc = register_cp_sock();
+    if (rc != 0) {
+        pr_err("Failed to register Catnet socket handler with kernel, err=%d. Bailing!", rc);
+        goto err_sock;
+    }
+
+    pr_info("Catnet registered fully (kyttie impl), ready for use.");
+
+    return rc;
+
+err_sock:
+    unregister_cp_sock();
+
+err_proto:
+    unregister_cp_proto();
+
     return rc;
 }
 
