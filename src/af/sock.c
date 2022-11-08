@@ -21,15 +21,18 @@ int cp_create(struct net* net, struct socket *sock, int proto, int kern)
 
     // If we are not allowed to create multiple instances of the network stack,
     // but are requested to do so, error out.
-    rc = -ESOCKTNOSUPPORT;
-    if (!net_eq(net, &init_net)) {
-        rc = -EAFNOSUPPORT;
+    rc = -EAFNOSUPPORT;
+    if (!net_eq(net, &init_net))
         goto out;
-    }
 
-    // Don't need to do anything more if they do not request a raw connectionless
-    // socket.
+    /* // Scream! (if the socket type isn't raw or dgram, we don't support other stuff)
+    rc = -ESOCKTNOSUPPORT;
     if (sock->type != SOCK_RAW && sock->type != SOCK_DGRAM)
+        goto out; */
+
+    // Scream! (if the socket type isn't raw, we don't support other stuff)
+    rc = -ESOCKTNOSUPPORT;
+    if (sock->type != SOCK_RAW)
         goto out;
 
     // Are we capable of creating a raw socket, if requested?
