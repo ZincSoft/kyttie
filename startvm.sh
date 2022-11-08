@@ -12,5 +12,8 @@ qemu-system-x86_64 \
     -vga std \
     --enable-kvm
 
-echo "Please proceed to the chamber lock."
+echo "GLaDOS: First, however, note the incandescent particle field across the exit."
+echo "GLaDOS: This Aperture Science Material Emancipation Grid will vaporize any unauthorized hardware-kiling errors that passes through it."
+echo
+echo "Milo, speaker for the computers: Great work for using one, your computer thanks you!"
 
