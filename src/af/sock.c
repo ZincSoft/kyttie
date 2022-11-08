@@ -31,7 +31,6 @@ int cp_create(struct net* net, struct socket *sock, int proto, int kern) {
 
     // Are we capable of creating a raw socket, if requested?
     // If it's a kernel socket it is going to succeed.
-    // TODO: wtf are kernel sockets?
     rc = -EPERM;
     if (!kern && sock->type == SOCK_RAW && !capable(CAP_NET_RAW))
         goto out;
