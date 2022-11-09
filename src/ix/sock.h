@@ -24,7 +24,7 @@ int ix_recvmsg(struct socket *, struct msghdr *, size_t, int);
 #pragma GCC diagnostic ignored "-Wunused-variable"
 /** Describe Catnet raw protocol family over IX. */
 static const struct proto_ops ix_raw_ops = {
-    .family = CP_PROTOCOL_FAMILY,
+    .family = PF_CP,
     .owner = THIS_MODULE,
 
     .release    = ix_release,

@@ -25,7 +25,7 @@ static struct cp_sock {
 
 /** Describe Catnet protocol family. */
 static const struct net_proto_family cp_family_ops = {
-    .family = CP_PROTOCOL_FAMILY,
+    .family = PF_CP,
     .create = cp_create,
     .owner  = THIS_MODULE,
 };

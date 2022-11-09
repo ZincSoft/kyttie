@@ -1,4 +1,4 @@
-EXTRA_CFLAGS = -Wall -Wno-error=unused-variable -Wno-error=unused-function -g -DDEBUG -I./linux_source_tree.ignore/include/ -I$(MOD_SOURCE_DIR)/include/
+EXTRA_CFLAGS = -Wall -Wno-error=unused-variable -Wno-error=unused-function -g -DDEBUG -DBUILDING_AS_MODULE -I./linux_source_tree.ignore/include/ -I$(MOD_SOURCE_DIR)/include/
 
 obj-m += kyttie.o
 kyttie-y := cp.o proto.o sock.o ix/sock.o

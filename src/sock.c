@@ -12,7 +12,7 @@ int register_cp_sock(void)
 
 void unregister_cp_sock(void)
 {
-    sock_unregister(CP_PROTOCOL_FAMILY);
+    sock_unregister(PF_CP);
 }
 
 int cp_create(struct net* net, struct socket *sock, int proto, int kern)
@@ -46,8 +46,13 @@ int cp_create(struct net* net, struct socket *sock, int proto, int kern)
     if (!kern && sock->type == SOCK_RAW && !capable(CAP_NET_RAW))
         goto out;
 
+    // Are they requesting a sane protocol?
+    rc = -EPROTONOSUPPORT;
+    if (proto != CPPROTO_IX)
+        goto out;
+
     rc = -ENOMEM;
-    sk = sk_alloc(net, CP_PROTOCOL_FAMILY, GFP_KERNEL, &cp_proto, kern);
+    sk = sk_alloc(net, PF_CP, GFP_KERNEL, &cp_proto, kern);
     if (!sk)
         goto out;
 
