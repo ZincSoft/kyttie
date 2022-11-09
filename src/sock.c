@@ -2,6 +2,7 @@
 #include <linux/socket.h>
 
 #include "sock.h"
+#include "ix/sock.h"
 #include "proto.h"
 
 int register_cp_sock(void)
@@ -16,6 +17,10 @@ void unregister_cp_sock(void)
 
 int cp_create(struct net* net, struct socket *sock, int proto, int kern)
 {
+    // NOTE: This needs to be refactored when the WAN exclusive
+    // routing protocol is introduced! It's kinda weird as it
+    // stands now.
+
     struct sock *sk;
     int rc;
 
@@ -50,94 +55,10 @@ int cp_create(struct net* net, struct socket *sock, int proto, int kern)
 
     sock_init_data(sock, sk);
 
-    sock->ops = &cp_raw_ops;
+    sock->ops = &ix_raw_ops;
     sock->state = SS_UNCONNECTED;
 
     out:
         return rc;
-}
-
-/*
- * THIS
- *      IS WHERE THE
- *                   MAGIC HAPPENS!
- */
-
-int cp_raw_release(struct socket *)
-{
-    pr_err("cp_raw_release: unimplemented");
-    return -EAFNOSUPPORT;
-}
-
-int cp_raw_bind(struct socket *, struct sockaddr *, int)
-{
-    pr_err("cp_raw_bind: unimplemented");
-    return -EAFNOSUPPORT;
-}
-
-int cp_raw_connect(struct socket *, struct sockaddr *, int, int)
-{
-    pr_err("cp_raw_connect: unimplemented");
-    return -EAFNOSUPPORT;
-}
-
-int cp_raw_accept(struct socket *, struct socket *, int, _Bool)
-{
-    pr_err("cp_raw_accept: unimplemented");
-    return -EAFNOSUPPORT;
-}
-
-int cp_raw_getname(struct socket *, struct sockaddr *, int)
-{
-    pr_err("cp_raw_getname: unimplemented");
-    return -EAFNOSUPPORT;
-}
-
-__poll_t cp_raw_poll(struct file *, struct socket *, struct poll_table_struct *)
-{
-    pr_err("cp_raw_poll: unimplemented");
-    return 0;
-}
-
-int cp_raw_ioctl(struct socket *, unsigned int, long unsigned int)
-{
-    pr_err("cp_raw_ioctl: unimplemented");
-    return -EAFNOSUPPORT;
-}
-
-int cp_raw_listen(struct socket *, int)
-{
-    pr_err("cp_raw_error: unimplemented");
-    return -EAFNOSUPPORT;
-}
-
-int cp_raw_shutdown(struct socket *, int)
-{
-    pr_err("cp_raw_shutdown: unimplemented");
-    return -EAFNOSUPPORT;
-}
-
-int cp_raw_setsockopt(struct socket *, int, int, sockptr_t, unsigned int)
-{
-    pr_err("cp_raw_setsockopt: unimplemented");
-    return -EAFNOSUPPORT;
-}
-
-int cp_raw_getsockopt(struct socket *, int, int, char *, int *)
-{
-    pr_err("cp_raw_getsockopt: unimplemented");
-    return -EAFNOSUPPORT;
-}
-
-int cp_raw_sendmsg(struct socket *, struct msghdr *, size_t)
-{
-    pr_err("cp_raw_sendmsg: unimplemented");
-    return -EAFNOSUPPORT;
-}
-
-int cp_raw_recvmsg(struct socket *, struct msghdr *, size_t, int)
-{
-    pr_err("cp_raw_recvmsg: unimplemented");
-    return -EAFNOSUPPORT;
 }
 
