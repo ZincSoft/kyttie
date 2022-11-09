@@ -3,7 +3,7 @@
 
 #include <net/sock.h>
 #include <linux/socket.h>
-#include "pf.h"
+#include <cp.h>
 
 /** Registers the Catnet socket functionality with the kernel.*/
 int register_cp_sock(void);

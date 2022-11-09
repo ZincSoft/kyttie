@@ -3,7 +3,7 @@
 
 #include <net/sock.h>
 #include <linux/socket.h>
-#include "../pf.h"
+#include <cp.h>
 
 /** Raw Catnet socket operations. */
 int ix_release(struct socket *);

@@ -7,7 +7,7 @@ ifneq ($(_NO_RULES),T)
 ifneq ($($(_UNIT_NAME)_DEFINED),T)
 
 all: $($(_UNIT_NAME)_KMOD
-	make -C $(KDIR) M=$(_UNIT_PATH)
+	make -C $(KDIR) M=$(_UNIT_PATH) MOD_SOURCE_DIR=$(shell pwd)
 
 .PHONY: clean $(_CLEAN)
 clean: $(_CLEAN)
