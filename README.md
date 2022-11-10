@@ -15,6 +15,10 @@ choose to develop, but if that was your intent you probably already knew that.
 
 It's not automatically installed, you have to do that yourself :)
 
+## Kernel Version
+Kyttie is actively developed against 6.1.0-rc3, but it's based off some really stagnant kernel APIs
+so it should work fine.
+
 ## Examples
 Don't let the examples directory fool you, that's internal testing stuff.
 
