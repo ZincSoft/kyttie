@@ -6,12 +6,13 @@ To build kyttie, simply run the Makefile. Things should be autodetected or the d
 sane. Look through the Makefiles if you don't trust a bunch of highschools to not fuck your
 computer to high hell.
 
-```
-make
-```
+Kyttie requires some custom kernel patches. Because this software is in it's infancy and is
+developed by one person, these aren't published. If you want it so bad, patch the kernel yourself.
+Should be too bad ;)
 
-Set the `KDIR` environment variable to build against a custom kernel, which is recommended if you
-choose to develop, but if that was your intent you probably already knew that.
+```
+make KDIR=<path to built and patched kernel>
+```
 
 It's not automatically installed, you have to do that yourself :)
 
