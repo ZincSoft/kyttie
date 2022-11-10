@@ -18,6 +18,6 @@ It's not automatically installed, you have to do that yourself :)
 ## Examples
 Don't let the examples directory fool you, that's internal testing stuff.
 
-# Authors
+## Authors
 1. Milo Banks
 
